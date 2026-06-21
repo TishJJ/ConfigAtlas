@@ -15,7 +15,7 @@ By parsing a declarative file into nodes (jobs, steps, fields) and edges (depend
 
 ## Why This Works (and Where It Doesn't)
 
-This approach is built for **declarative, statically-defined structures** — files that describe state rather than execute logic line-by-line. GitHub Actions workflows, GitLab CI pipelines, and proxy/gateway configs (e.g. Kong-style declarative configs) all fit this mold.
+This approach is built for **declarative, statically defined structures** — files that describe state rather than execute logic line by line. GitHub Actions workflows, GitLab CI pipelines, and proxy/gateway configs (e.g. Kong-style declarative configs) all fit this mold.
 
 It deliberately does *not* try to understand what a job's underlying code does. That's a different, harder problem — and one suited to a separate semantic layer (see Future Direction below).
 
@@ -28,7 +28,7 @@ It also doesn't work well for **dynamic** configuration that's only resolved at 
 3. **Graph** — Layer a lightweight graph structure on top, where nodes are jobs/fields and edges are the relationships (data flow, shared fields, cross-job dependencies).
 4. **Query** — Use the graph to answer structural questions: field lineage, common fields across workflows, blast radius for a given change.
 
-Each layer is doing different work: the parser determines what kinds of files this approach works well on, the store decouples analysis timing from live changes, and the graph is what actually produces insight you wouldn't get by reading the file directly.
+Each layer does different work: the parser determines which kinds of files this approach works well on, the store decouples analysis timing from live changes, and the graph produces insights you wouldn't get by reading the file directly.
 
 ## Worked Examples
 
